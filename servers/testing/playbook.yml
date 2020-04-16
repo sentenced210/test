@@ -1,0 +1,13 @@
+---
+- hosts: all
+  remote_user: vagrant
+  become: true
+
+  tasks:
+    - name: Install aptitude using apt
+      apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
+
+    - name: Install required system packages
+      apt: name={{ item }} state=latest update_cache=yes
+      loop: ['openjdk-8-jre']
+
