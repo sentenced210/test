@@ -33,6 +33,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>${artifactId}-${build.number}</finalName>
     </build>
     <dependencies>
         <dependency>
