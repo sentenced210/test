@@ -1,3 +1,5 @@
 .idea/
 DevOps_Project.iml
 target/
+**.vagrant
+**.log
