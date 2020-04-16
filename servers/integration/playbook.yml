@@ -55,3 +55,9 @@
     - name: Install Docker Module for Python
       pip:
         name: docker
+
+    - name: Add users to docker group.
+      shell: "usermod -aG docker {{ item }}"
+      with_items:
+        - vagrant
+        - jenkins
