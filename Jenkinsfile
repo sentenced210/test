@@ -1,38 +1,24 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3-alpine'
+            args '-v /root/.m2:/root/.m2'
+        }
+    }
     stages {
         stage('Build') {
             steps {
-                sh 'echo step build'
+                sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'echo step test'
+                sh 'mvn test'
             }
-        }
-        stage('Deploy for testing') {
-            when {
-                branch 'testing'
-            }
-            steps {
-                sh 'echo testing branch'
-            }
-        }
-        stage('Deploy for production') {
-            when {
-                branch 'master'
-            }
-            steps {
-                sh 'echo master branch'
-            }
-        }
-        stage('Deploy for setting_jenkins') {
-            when {
-                branch 'master'
-            }
-            steps {
-                sh 'echo setting_jenkins branch'
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
             }
         }
     }
