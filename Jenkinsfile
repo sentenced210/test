@@ -35,4 +35,5 @@ pipeline {
                 sh 'echo setting_jenkins branch'
             }
         }
+    }
 }
