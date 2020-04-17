@@ -31,7 +31,7 @@ pipeline {
                             configName: "testing_server",
                             verbose: true,
                             transfers: [
-                                sshTransfer(execCommand: "rm -r target/")
+                                sshTransfer(execCommand: "rm -r target/"),
                                 sshTransfer(sourceFiles: "target/*.jar")
                             ]
                         )
@@ -49,7 +49,7 @@ pipeline {
                             configName: "testing_server",
                             verbose: true,
                             transfers: [
-                                sshTransfer(execCommand: "java -jar target/*.jar"),
+                                sshTransfer(execCommand: "java -jar target/*.jar")
                             ]
                         )
                     ]
