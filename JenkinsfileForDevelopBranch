@@ -9,13 +9,23 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -Dbuild.number=${GIT_COMMIT} -DskipTests package'
+                sh 'mvn -Dbuild.name=${GIT_COMMIT} -DskipTests package'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn -Dbuild.name=${GIT_COMMIT}
+                test'
             }
+        }
+        stage('Deploy'){
+             steps {
+                sh '
+                    cd target
+                    ls
+                    cd ..
+                '
+             }
         }
     }
 
@@ -24,7 +34,7 @@ pipeline {
             junit 'target/surefire-reports/*.xml'
         }
         success {
-            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            archiveArtifacts artifacts: 'target/*${GIT_COMMIT}.jar', fingerprint: true
         }
     }
 }
