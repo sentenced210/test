@@ -15,6 +15,9 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'mvn -Dbuild.number=${GIT_COMMIT} test'
+                sh 'cd target'
+                sh 'ls'
+                sh 'cd ..'
             }
         }
     }
