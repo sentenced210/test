@@ -27,13 +27,13 @@
                         <manifestEntries>
                             <Specification-Title>${project.artifactId}</Specification-Title>
                             <Specification-Version>${project.version}</Specification-Version>
-                            <Implementation-Version>${build.name}</Implementation-Version>
+                            <Implementation-Version>${build.number}</Implementation-Version>
                         </manifestEntries>
                     </archive>
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>${artifactId}-${project.version}${build.name}</finalName>
+        <finalName>${artifactId}-${project.version}${build.number}</finalName>
     </build>
     <dependencies>
         <dependency>
