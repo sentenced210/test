@@ -6,14 +6,19 @@ pipeline {
         }
     }
     stages {
+        stage('Clean') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
         stage('Build') {
             steps {
-                sh 'mvn -Dbuild.name=-${GIT_BRANCH}-${GIT_COMMIT} -DskipTests package'
+                sh 'mvn -B -Dbuild.number=-${BUILD_ID} -DskipTests package'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn -Dbuild.name=-${GIT_BRANCH}-${GIT_COMMIT} test'
+                sh 'mvn test'
             }
         }
 
