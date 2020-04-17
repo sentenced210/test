@@ -5,23 +5,26 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
+
     stages {
-        stage('Build_test') {
+        stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-        stage('Unit_and_Integration_tests') {
+        stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn -Dbuild.number=${BUILD_NUMBER} test'
             }
         }
     }
 
     post {
         always {
-            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             junit 'target/surefire-reports/*.xml'
+        }
+        success {
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
         }
     }
 }
