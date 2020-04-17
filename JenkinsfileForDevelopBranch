@@ -9,12 +9,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -Dbuild.name=${GIT_COMMIT} -DskipTests package'
+                sh 'mvn -Dbuild.name=-${GIT_COMMIT} -DskipTests package'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn -Dbuild.name=${GIT_COMMIT} test'
+                sh 'mvn -Dbuild.name=-${GIT_COMMIT} test'
             }
         }
     }
