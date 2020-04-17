@@ -17,15 +17,6 @@ pipeline {
                 sh 'mvn -Dbuild.name=${GIT_COMMIT} test'
             }
         }
-        stage('Deploy'){
-             steps {
-                sh '
-                    cd target
-                    ls
-                    cd ..
-                '
-             }
-        }
     }
 
     post {
