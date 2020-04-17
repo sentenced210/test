@@ -9,13 +9,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -Dbuild.number=-${GIT_BRANCH} -DskipTests package'
+                sh 'mvn -B -Dbuild.number=-${GIT_BRANCH} -DskipTests clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn -Dbuild.number=-${GIT_BRANCH} package'
-                sh 'ls -R'
+                sh 'mvn test'
             }
         }
     }
