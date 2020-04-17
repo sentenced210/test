@@ -14,13 +14,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'mvn -B -Dbuild.number=-${BRANCH_NAME} -DskipTests package'
+                sh 'mvn -B -Dbuild.number=-${BUILD_ID} -DskipTests package'
             }
         }
         stage('Test') {
             steps {
                 sh 'mvn test'
-                sh 'ls -R'
             }
         }
     }
