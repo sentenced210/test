@@ -14,8 +14,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'mvn -Dbuild.name=${GIT_COMMIT}
-                test'
+                sh 'mvn -Dbuild.name=${GIT_COMMIT} test'
             }
         }
         stage('Deploy'){
