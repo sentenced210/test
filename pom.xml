@@ -32,6 +32,21 @@
                     </archive>
                 </configuration>
             </plugin>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>src/main/java/</classpathPrefix>
+                            <mainClass>org.innopolis.devops.group4.App</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
         <finalName>${artifactId}-${project.version}${build.number}</finalName>
     </build>
