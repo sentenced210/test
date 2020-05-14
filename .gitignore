@@ -3,3 +3,4 @@ DevOps_Project.iml
 target/
 **.vagrant
 **.log
+servers/integration/jenkins_data/
