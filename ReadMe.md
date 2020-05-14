@@ -32,4 +32,5 @@ Host devops-group4-production-vm
 - Go to the `/servers/testing/` and run `vagrant up`
 - Go to the `/servers/production/` and run `vagrant up`
 
+# Run jenkins
 
