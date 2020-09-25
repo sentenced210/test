@@ -1,5 +1,5 @@
 # Cloning and configure repository
-1 Clone this repository
+1 Clone this repository.
 
 2 Download artifacts and extract them into `servers/integration/jenkins_data`. Be carefully!!! In `servers/integrtion/jenkins_data` should be folders like `jobs`, `users`, `plugins` etc.
 
